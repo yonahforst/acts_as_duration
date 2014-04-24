@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    acts_as_interval (0.0.1)
+    acts_as_duration (0.0.1)
       rails (~> 4.0.3)
 
 GEM
@@ -82,5 +82,5 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  acts_as_interval!
+  acts_as_duration!
   sqlite3

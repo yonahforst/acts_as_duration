@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ActsAsIntervalTest < ActiveSupport::TestCase
+class ActsAsDurationTest < ActiveSupport::TestCase
 
   test 'adds conversion methods to model' do
     expected_methods = [:test_minutes, :test_hours, :test_minutes=, :test_hours=]    
@@ -8,7 +8,7 @@ class ActsAsIntervalTest < ActiveSupport::TestCase
   end
   
   test 'adds additional conversion methods to model' do
-    Foobar.class_eval {acts_as_interval :test_seconds, additional_conversions: {days: 1.day.value}}
+    Foobar.class_eval {acts_as_duration :test_seconds, additional_conversions: {days: 1.day.value}}
     expected_methods = [:test_minutes, :test_hours, :test_minutes=, :test_hours=, :test_days, :test_days=]
     assert (expected_methods - Foobar.instance_methods).empty?
   end
@@ -35,7 +35,7 @@ class ActsAsIntervalTest < ActiveSupport::TestCase
   
   
   test 'converts from minutes to seconds and hours' do
-    Foobar.class_eval {attr_accessor :barfoo_minutes; acts_as_interval :barfoo_minutes}
+    Foobar.class_eval {attr_accessor :barfoo_minutes; acts_as_duration :barfoo_minutes}
     foo = Foobar.new(barfoo_minutes: 90)
     assert_equal 1.5, foo.barfoo_hours
     assert_equal 5400, foo.barfoo_seconds

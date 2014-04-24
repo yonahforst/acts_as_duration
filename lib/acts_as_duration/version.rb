@@ -1,3 +1,3 @@
-module ActsAsInterval
+module ActsAsDuration
   VERSION = "0.0.1"
 end

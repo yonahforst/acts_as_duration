@@ -1,4 +1,4 @@
-module ActsAsInterval
+module ActsAsDuration
   module Base
     extend ActiveSupport::Concern
     
@@ -7,7 +7,7 @@ module ActsAsInterval
     
 
     module ClassMethods
-      def acts_as_interval(base_attr, options = {})
+      def acts_as_duration(base_attr, options = {})
         valid_units = [:seconds, :minutes, :hours, :days]
         base_unit = options[:attr_unit] || base_attr[/(#{valid_units.join('|')})/,1].to_sym
 
@@ -39,4 +39,4 @@ module ActsAsInterval
 end
 
 
-ActiveRecord::Base.send :include, ActsAsInterval::Base
+ActiveRecord::Base.send :include, ActsAsDuration::Base
