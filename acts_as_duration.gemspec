@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version     = ActsAsDuration::VERSION
   s.authors     = ["Yonah Forst"]
   s.email       = ["yonaforst@hotmail.com"]
-  s.homepage    = "github.com/joshblour/acts_as_duration"
+  s.homepage    = "http://github.com/joshblour/acts_as_duration"
   s.summary     = "attr_accessor that automatically converts between duration units"
   s.description = "adds getter and setters for an existing attribute to covnert between seconds, minutes, hours, and days"
 

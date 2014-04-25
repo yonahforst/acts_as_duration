@@ -1,3 +1,4 @@
+acts_as_duration-*.gem
 .bundle/
 log/*.log
 pkg/

@@ -49,4 +49,19 @@ class ActsAsDurationTest < ActiveSupport::TestCase
     assert_equal 2.03, foo.barfoo_hours
   end
   
+  test 'accepts multiple attributs as well as hash arguments' do
+    Foobar.class_eval do 
+      attr_accessor :a_seconds, :b_minutes, :c_hours
+      acts_as_duration :a_seconds, :b_minutes, :c_hours, read_only: true
+    end
+    
+    expected_methods = [:a_minutes, :a_hours, :b_seconds, :b_hours, :c_seconds, :c_minutes]    
+    assert (expected_methods - Foobar.instance_methods).empty?
+    
+    unexpected_methods = [:a_minutes=, :a_hours=, :b_seconds=, :b_hours=, :c_seconds=, :c_minutes=]    
+    assert_equal 6, (unexpected_methods - Foobar.instance_methods).count
+    
+    
+  end
+  
 end

@@ -7,15 +7,17 @@ module ActsAsDuration
     
 
     module ClassMethods
-      def acts_as_duration(base_attr, options = {})
+      def acts_as_duration(*base_attrs, **options)
         valid_units = [:seconds, :minutes, :hours, :days]
-        base_unit = options[:attr_unit] || base_attr[/(#{valid_units.join('|')})/,1].to_sym
+        base_attrs.each do |base_attr|
+          base_unit = options[:attr_unit] || base_attr[/(#{valid_units.join('|')})/,1].to_sym
 
-        (valid_units - [base_unit]).each do |new_unit|
-          name = base_attr.to_s.gsub!(base_unit.to_s, new_unit.to_s)
-          options_hash = {name: name, base_attr: base_attr, base_unit: base_unit, new_unit: new_unit}
-          define_reader_method(options_hash)
-          define_writer_method(options_hash) unless options[:read_only]         
+          (valid_units - [base_unit]).each do |new_unit|
+            name = base_attr.to_s.gsub!(base_unit.to_s, new_unit.to_s)
+            options_hash = {name: name, base_attr: base_attr, base_unit: base_unit, new_unit: new_unit}
+            define_reader_method(options_hash)
+            define_writer_method(options_hash) unless options[:read_only]         
+          end
         end
       end
         
