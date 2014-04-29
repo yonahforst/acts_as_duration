@@ -8,7 +8,7 @@ module ActsAsDuration
 
     module ClassMethods
       def acts_as_duration(*base_attrs, **options)
-        valid_units = [:seconds, :minutes, :hours, :days]
+        valid_units = [:seconds, :minutes, :hours, :days, :hhmmss]
         base_attrs.each do |base_attr|
           base_unit = options[:attr_unit] || base_attr[/(#{valid_units.join('|')})/,1].to_sym
 
@@ -22,16 +22,17 @@ module ActsAsDuration
       end
         
       private
-      
+            
       def define_reader_method(o)
         define_method(o[:name]) do
-          self.send(o[:base_attr]).send(o[:base_unit]).to_unit(o[:new_unit]).round(2)
+          self.send(o[:base_attr]).send(o[:base_unit]).to_unit(o[:new_unit])
         end
       end
       
       def define_writer_method(o)
         define_method("#{o[:name]}=") do |value|
-          new_value = value.to_f.send(o[:new_unit]).to_unit(o[:base_unit]).round(2)
+          value = o[:new_unit] == :hhmmss ? value.to_s : value.to_f
+          new_value = value.send(o[:new_unit]).to_unit(o[:base_unit])
           self.send("#{o[:base_attr]}=", new_value)
         end
       end
