@@ -76,7 +76,7 @@ class ActsAsDurationTest < ActiveSupport::TestCase
     foo.barfoo_hhmmss = "02:12:34"
     assert_equal 7954, foo.barfoo_seconds
     assert_equal 2.21, foo.barfoo_hours
-    assert_equal 132.57, foo.barfoo_minutes    
+    assert_equal 132.57, foo.barfoo_minutes.round(2)    
   end
   
   test 'converts from hhmmss to minutes, seconds, and hours' do
@@ -96,9 +96,9 @@ class ActsAsDurationTest < ActiveSupport::TestCase
     assert_equal 2.03, foo.barfoo_hours
     assert_equal "02:02", foo.barfoo_hhmmss    
     
-    foo.barfoo_minutes = 132
-    assert_equal 7954, foo.test_seconds
-    assert_equal 2.21, foo.test_hours
+    foo.barfoo_minutes = 132.57
+    assert_equal 7954, foo.barfoo_seconds
+    assert_equal 2.21, foo.barfoo_hours
     assert_equal "02:12:34", foo.barfoo_hhmmss 
   end
   

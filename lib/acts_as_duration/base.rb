@@ -25,7 +25,9 @@ module ActsAsDuration
             
       def define_reader_method(o)
         define_method(o[:name]) do
-          self.send(o[:base_attr]).send(o[:base_unit]).to_unit(o[:new_unit])
+          base_value = self.send(o[:base_attr]).send(o[:base_unit])
+          new_value = base_value.to_unit(o[:new_unit])
+          new_value.is_a?(Float) ? new_value.round(2) : new_value
         end
       end
       

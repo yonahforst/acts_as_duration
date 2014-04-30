@@ -18,7 +18,7 @@ ActiveSupport::Duration.class_eval do
     if unit.to_sym == :hhmmss
       to_hhmmss(self.value) 
     else
-      (self.value.to_f / DIVISORS[unit.to_sym]).round(2)
+      (self.value.to_f / DIVISORS[unit.to_sym])
     end
   end
   
