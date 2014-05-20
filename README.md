@@ -16,7 +16,8 @@ total_hhmmss=
 
 Note: the getter methods will always return a `Float` (except `hhmmss`, which returns a `String`). The setter methods will accept an `Integer`, `String`, or `Float`.
 
-Note: the base attribute name should contain either 'seconds', 'minutes', 'hours', 'days', or 'hhmmss' otherwise the gem can't know the base unit. 
+Note: the base attribute name should contain either 'seconds', 'minutes', 'hours', 'days', or 'hhmmss' otherwise the gem can't know the base unit.
+
 Alternatively, you can specify the unit like this: `acts_as_duration :total_consumed, attr_unit: :minutes`
 
 
@@ -53,14 +54,13 @@ foo.total_days
 ## Arguments
 
 You can call it on multiple attributes at once and include options at the end.
+
 `acts_as_duration :total_minutes, :completed_days, read_only: true`
 
 ####Options:
-**`attr_unit:`** Either `:seconds`, `:minutes`, `:hours`, `:days`, or `:hhmmss`
-_Description: Specify the unit of the base attribute (not necessary if it's already part of the attribute name like e.g. `total_seconds`)_
+**`attr_unit:`** Either `:seconds`, `:minutes`, `:hours`, `:days`, or `:hhmmss`. Specify the unit of the base attribute (not necessary if it's already part of the attribute name like e.g. `total_seconds`)
 
-**`read_only:`** `true` or `false`
-_Description: If `true`, will only create the getter method and not the setter_
+**`read_only:`** `true` or `false`. If `true`, will only create the getter method and not the setter
  
 
 
