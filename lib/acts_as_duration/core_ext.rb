@@ -26,11 +26,8 @@ ActiveSupport::Duration.class_eval do
     seconds = total_seconds % 60
     minutes = (total_seconds / 60) % 60
     hours = total_seconds / (60 * 60)
-    if seconds.zero?
-      format("%02d:%02d", hours, minutes)
-    else
-      format("%02d:%02d:%02d", hours, minutes, seconds)
-    end 
+
+    format("%02d:%02d:%02d", hours, minutes, seconds)
   end
     
 end

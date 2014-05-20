@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    acts_as_duration (0.0.2)
+    acts_as_duration (0.0.4)
       rails (~> 4.0.3)
 
 GEM
@@ -41,7 +41,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.25.1)
     minitest (4.7.5)
-    multi_json (1.9.2)
+    multi_json (1.10.0)
     polyglot (0.3.4)
     rack (1.5.2)
     rack-test (0.6.2)

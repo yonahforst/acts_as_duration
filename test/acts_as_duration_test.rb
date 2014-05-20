@@ -17,17 +17,17 @@ class ActsAsDurationTest < ActiveSupport::TestCase
     foo = Foobar.new(test_seconds: 5400)
     assert_equal 1.5, foo.test_hours
     assert_equal 90, foo.test_minutes
-    assert_equal "01:30", foo.test_hhmmss
+    assert_equal "01:30:00", foo.test_hhmmss
     
     foo.test_hours = 2
     assert_equal 7200, foo.test_seconds
     assert_equal 120, foo.test_minutes
-    assert_equal "02:00", foo.test_hhmmss
+    assert_equal "02:00:00", foo.test_hhmmss
     
     foo.test_minutes = 123
     assert_equal 7380, foo.test_seconds
     assert_equal 2.05, foo.test_hours
-    assert_equal "02:03", foo.test_hhmmss
+    assert_equal "02:03:00", foo.test_hhmmss
     
     
     foo.test_hhmmss = "02:12:34"
@@ -52,7 +52,7 @@ class ActsAsDurationTest < ActiveSupport::TestCase
     assert_equal 1800, foo.test_seconds
     assert_equal 30, foo.test_minutes
     assert_equal 0.5, foo.test_hours
-    assert_equal "00:30", foo.test_hhmmss
+    assert_equal "00:30:00", foo.test_hhmmss
   end
   
   
@@ -61,17 +61,17 @@ class ActsAsDurationTest < ActiveSupport::TestCase
     foo = Foobar.new(barfoo_minutes: 90)
     assert_equal 1.5, foo.barfoo_hours
     assert_equal 5400, foo.barfoo_seconds
-    assert_equal "01:30", foo.barfoo_hhmmss
+    assert_equal "01:30:00", foo.barfoo_hhmmss
     
     foo.barfoo_hours = 2
     assert_equal 7200, foo.barfoo_seconds
     assert_equal 120, foo.barfoo_minutes
-    assert_equal "02:00", foo.barfoo_hhmmss
+    assert_equal "02:00:00", foo.barfoo_hhmmss
     
     foo.barfoo_seconds = 7320
     assert_equal 122, foo.barfoo_minutes
     assert_equal 2.03, foo.barfoo_hours
-    assert_equal "02:02", foo.barfoo_hhmmss
+    assert_equal "02:02:00", foo.barfoo_hhmmss
     
     foo.barfoo_hhmmss = "02:12:34"
     assert_equal 7954, foo.barfoo_seconds
@@ -89,12 +89,12 @@ class ActsAsDurationTest < ActiveSupport::TestCase
     foo.barfoo_hours = 2
     assert_equal 7200, foo.barfoo_seconds
     assert_equal 120, foo.barfoo_minutes
-    assert_equal "02:00", foo.barfoo_hhmmss
+    assert_equal "02:00:00", foo.barfoo_hhmmss
     
     foo.barfoo_seconds = 7320
     assert_equal 122, foo.barfoo_minutes
     assert_equal 2.03, foo.barfoo_hours
-    assert_equal "02:02", foo.barfoo_hhmmss    
+    assert_equal "02:02:00", foo.barfoo_hhmmss    
     
     foo.barfoo_minutes = 132.57
     assert_equal 7954, foo.barfoo_seconds
